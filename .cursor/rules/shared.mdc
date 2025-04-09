@@ -5,7 +5,8 @@ alwaysApply: true
 ---
 # AI Rules for {{project-name}}
 
-{{project-description}}
+Body Planner is an application for creating and managing training plans, emphasizing ease of use and leveraging artificial intelligence to automatically generate personalized plans. The application is designed for individuals who lack experience in planning workouts independently or wish to save time, yet require an individually tailored exercise plan.
+
 
 ## Tech Stack
 
