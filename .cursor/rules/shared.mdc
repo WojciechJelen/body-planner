@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# AI Rules for {{project-name}}
+
+{{project-description}}
+
+## Tech Stack
+
+- NextJS Shadcn/ui
+- TypeScript 5
+- React 19
+- Tailwind 4
+- shadcn/ui
+- Zustand - for more complex state management if TanStack Query is not sufficient
+
+## Project Structure
+
+When introducing changes to the project, always follow the directory structure below:
+
+- `./src` - Source code with clear separation from configuration files
+- `./src/app` - Routing structure using Next.js 15's App Router
+- `./src/app/api` - API endpoints using route handlers
+- `./src/components/ui` - Basic reusable UI components (buttons, cards, etc.)
+- `./src/components/layout` - Structural components used across pages (header, footer, sidebar)
+- `./src/components/features` - Components tied to specific business features
+- `./src/lib` - Complex functionality interfacing with external services
+- `./src/utils` - Pure utility functions with no side effects
+- `./src/styles` - Global styles, variables, and theme definitions
+- `./src/store` - State management files (for solutions like Zustand)
+- `./src/models` - TypeScript interfaces and type definitions
+- `./public` - Static assets accessible at the root URL
+
+When modifying the directory structure, always update this section.
+
+## Coding practices
+
+### Guidelines for clean code
+
+- Prioritize error handling and edge cases
+- Handle errors and edge cases at the beginning of functions.
+- Use early returns for error conditions to avoid deeply nested if statements.
+- Place the happy path last in the function for improved readability.
+- Avoid unnecessary else statements; use if-return pattern instead.
+- Use guard clauses to handle preconditions and invalid states early.
+- Implement proper error logging and user-friendly error messages.
+- Consider using custom error types or error factories for consistent error handling.
