@@ -1,7 +1,7 @@
 ---
 description: 
-globs: 
-alwaysApply: true
+globs: *.tsx,*.ts,*.css,tsconfig.json,postcss.config.mjs
+alwaysApply: false
 ---
 ## FRONTEND
 
