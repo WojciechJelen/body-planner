@@ -10,4 +10,4 @@ alwaysApply: false
 - Follow Supabase guidelines for security and performance
 - Use Zod schemas to validate data exchanged with the backend
 - Use the best practices of using Supabase with NextJS (15.2), for both `client` and server components.
-
+- Use NextJS App Router API routes
