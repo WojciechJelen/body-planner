@@ -44,9 +44,9 @@ export type TrainingPlanDto = TrainingPlan;
  * Structure for pagination information used in list responses.
  */
 export type PaginationInfo = {
-  currentPage: number;
-  totalPages: number;
-  totalItems: number;
+  current_page: number;
+  total_pages: number;
+  total_items: number;
   limit: number;
 };
 
@@ -77,7 +77,7 @@ export type UpdateTrainingPlanCommand = Pick<
  */
 interface ExerciseInfo {
   name: string;
-  targetMuscle: string;
+  target_muscle: string;
 }
 
 /**
@@ -91,13 +91,13 @@ interface PlanContext {
 /**
  * Command Model for requesting exercise recommendations from AI.
  * POST /api/v1/ai/recommendations/exercises
- * Contains context required by the AI. Links 'trainingGoal' to the profile type.
+ * Contains context required by the AI. Links 'training_goal' to the profile type.
  */
 export type ExerciseRecommendationCommand = {
-  currentExercise: ExerciseInfo;
-  trainingGoal: Profile["training_goal"]; // Linked to profile type
-  availableEquipment: string[];
-  planContext?: PlanContext; // Optional context
+  current_exercise: ExerciseInfo;
+  training_goal: Profile["training_goal"]; // Linked to profile type
+  available_equipment: string[];
+  plan_context?: PlanContext; // Optional context
 };
 
 /**
@@ -123,6 +123,6 @@ export type ExerciseRecommendationDto = {
  */
 export type ApiErrorResponse = {
   message: string;
-  errorCode?: string; // Optional specific error code (e.g., 'PROFILE_INCOMPLETE')
+  error_code?: string; // Optional specific error code (e.g., 'PROFILE_INCOMPLETE')
   errors?: Record<string, string[]>; // Optional field-specific validation errors
 };
