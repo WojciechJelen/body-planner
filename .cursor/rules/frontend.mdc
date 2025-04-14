@@ -13,7 +13,7 @@ alwaysApply: false
 - Implement Just-in-Time (JIT) mode for development efficiency and smaller CSS bundles
 - Use arbitrary values with square brackets (e.g., w-[123px]) for precise one-off designs
 - Leverage the @apply directive in component classes to reuse utility combinations
-- Implement the Tailwind configuration file for customizing theme, plugins, and variants
+- Implement the Tailwind configuration file for customizing theme, plugins, and variants (global.css for Tailwind 4)
 - Use component extraction for repeated UI patterns instead of copying utility classes
 - Leverage the theme() function in CSS for accessing Tailwind theme values
 - Implement dark mode with the dark: variant

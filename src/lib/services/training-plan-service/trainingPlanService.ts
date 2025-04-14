@@ -1,23 +1,16 @@
 import { z } from "zod";
 import { SupabaseClient } from "@supabase/supabase-js";
 import { TrainingPlanDto } from "@/types/api-types";
-import OpenAI from "openai";
+import { google } from "@ai-sdk/google";
 import { generateObject } from "ai";
-import { openai as openaiAdapter } from "@ai-sdk/openai";
 import { ValidationResult, PlanGenerationResult } from "./types";
 import { mesocycleSchema, requiredProfileSchema } from "./training-plan-schema";
 
 export class TrainingPlanService {
   private supabase: SupabaseClient;
-  private openai: OpenAI;
-  private openaiModel: ReturnType<typeof openaiAdapter>;
 
   constructor(supabaseClient: SupabaseClient) {
     this.supabase = supabaseClient;
-    this.openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
-    this.openaiModel = openaiAdapter("gpt-3.5-turbo");
   }
 
   /**
@@ -100,7 +93,7 @@ export class TrainingPlanService {
       Create a comprehensive mesocycle training plan with detailed phases, exercises, and structured workout days.`;
 
       const { object: mesocycle } = await generateObject({
-        model: this.openaiModel,
+        model: google("gemini-2.5-pro-exp-03-25"),
         schema: mesocycleSchema,
         schemaName: "Mesocycle",
         schemaDescription:
