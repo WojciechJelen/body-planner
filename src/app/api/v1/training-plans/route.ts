@@ -5,14 +5,16 @@ import { TrainingPlanService } from "@/lib/services/training-plan-service/traini
 
 export async function POST() {
   try {
-    // Step 2: Authentication Integration - Use the correct async client
     const supabase = await createClient();
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
 
-    // Check if user is authenticated
-    if (!session) {
+    // Step 2: Use getUser() to verify session and get user
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    // Handle auth errors or no user
+    if (authError || !user) {
       return NextResponse.json(
         {
           message: "Authentication required",
@@ -22,7 +24,7 @@ export async function POST() {
       );
     }
 
-    const userId = session.user.id;
+    const userId = user.id;
 
     // Step 3: Create and call TrainingPlanService
     const trainingPlanService = new TrainingPlanService(supabase);
@@ -37,6 +39,14 @@ export async function POST() {
               message: result.message,
               error_code: result.error,
               missing_fields: result.missingFields,
+            } as ApiErrorResponse,
+            { status: 400 }
+          );
+        case "PROFILE_NOT_FOUND":
+          return NextResponse.json(
+            {
+              message: result.message,
+              error_code: result.error,
             } as ApiErrorResponse,
             { status: 400 }
           );
