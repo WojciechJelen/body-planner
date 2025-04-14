@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { createClient } from "@/lib/supabase/server";
 import { ApiErrorResponse } from "@/types/api-types";
 import { TrainingPlanService } from "@/lib/services/training-plan-service/trainingPlanService";
 
 export async function POST() {
   try {
-    // Step 2: Authentication Integration - Get user session from Supabase
-    const supabase = createRouteHandlerClient({ cookies });
+    // Step 2: Authentication Integration - Use the correct async client
+    const supabase = await createClient();
     const {
       data: { session },
     } = await supabase.auth.getSession();
